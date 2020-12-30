@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
-  </head>
-  
+</head>
+
 
 <style>
-    body{
+    body {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 30px;
         margin: 0;
         background: #dbdbdb;
         -webkit-font-smoothing: antialiased;
     }
-    .property_tile{
+
+    .property_tile {
         background: #ffffff;
         margin: 1%;
         height: 100%;
@@ -25,37 +27,44 @@
         overflow: hidden;
 
     }
-    .property_box{
+
+    .property_box {
         width: 30%;
         float: left;
         margin-right: 10%;
     }
-    .tile_text{
+
+    .tile_text {
         top: 0;
         padding-top: 2%;
         padding-left: 32%;
         font-size: 50%;
     }
-    .property_box img{
+
+    .property_box img {
         width: 85%;
         display: inline-block;
         margin: 10px;
     }
-   
-    .bedrooms{
+
+    .bedrooms {
         color: #008080;
         font-weight: bold;
     }
+
     fieldset {
-      border: 0;
+        border: 0;
     }
+
     label {
-      display: block;
+        display: block;
     }
+
     .overflow {
-      height: 200px;
+        height: 200px;
     }
-    a:link{
+
+    a:link {
         text-decoration: none;
         color: black;
     }
@@ -63,307 +72,264 @@
 
 
     .topnav {
-  background-color: #008080;
-}
+        background-color: #008080;
+    }
 
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
 
-.topnav .search-container {
-  padding-left:45%;
-  padding-right:45%;
-}
+    .topnav .search-container {
+        padding-left: 45%;
+        padding-right: 45%;
+    }
 
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border-radius: 5px;
-  margin-bottom: 8px;
-  border: none;
-}
+    .topnav input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        border: none;
+    }
 
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
-#filters{
-    font-size: 50%;
-    padding-left: 10%;
-}
-
-#prop1{
-    display: table-cell;
-}
-
-#fav{
-    float: right;
-    width: 20%;
-    background:#ccc;
-    text-align: center;
-}
-</style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {$("#prop1").draggable
-    ({  
-        revert: 'invalid',
-        snap: '#fav',
-        snapMode: 'inner',
-        snapTolerance: '22'
-    });
-
-$("#prop1").data({'originalLeft': $("#prop1").css('left'),
-                      'origionalTop': $("#prop1").css('top')
-                     });
-
-
-    $("#fav").droppable
-    ({
-        accept: '#prop1', 
-        drop: function(event, ui) 
-        {
-            $(this).find("#prop1").html();
+    @media screen and (max-width: 600px) {
+        .topnav .search-container {
+            float: none;
         }
-});
 
-    $(".reset").click(function() {
-        $("#prop1").css({'left': $("#prop1").data('originalLeft'),
-                             'top': $("#prop1").data('origionalTop')}
-                             );
-});
-  } );
-  </script>
+        .topnav a,
+        .topnav input[type=text],
+        .topnav .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+            padding: 14px;
+        }
+
+        .topnav input[type=text] {
+            border: 1px solid #ccc;
+        }
+    }
+
+    #filters {
+        font-size: 50%;
+        padding-left: 10%;
+    }
+
+    #prop1 {
+        display: table-cell;
+    }
+
+    #fav {
+        float: right;
+        width: 20%;
+        background: #ccc;
+        text-align: center;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#prop1").draggable
+            ({
+                revert: 'invalid',
+                snap: '#fav',
+                snapMode: 'inner',
+                snapTolerance: '22'
+            });
+
+        $("#prop1").data({
+            'originalLeft': $("#prop1").css('left'),
+            'origionalTop': $("#prop1").css('top')
+        });
+
+
+        $("#fav").droppable
+            ({
+                accept: '#prop1',
+                drop: function (event, ui) {
+                    $(this).find("#prop1").html();
+                }
+            });
+
+        $(".reset").click(function () {
+            $("#prop1").css({
+                'left': $("#prop1").data('originalLeft'),
+                'top': $("#prop1").data('origionalTop')
+            }
+            );
+        });
+    });
+</script>
 
 <body>
-<div class="topnav">
+    <div class="topnav">
         <div class="search-container">
             <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            
+                <input type="text" placeholder="Search.." name="search">
+
             </form>
         </div>
         <div id="fav">
-            Favourites 
+            Favourites
         </div>
-</div>
-
-<div id="filters">
-<h1>Filters</h1>
-<fieldset>
-        <label for="speed">Select Building Type</label>
-        <select name="speed" id="speed">
-            <option value="flat">Flat</option>
-            <option value="house">House</option>
-            <option value="any">Any</option>
-        </select>
-</fieldset>
-
-</div>
-
-    <div id="prop1" class="property_tile">  
-        <a href="Property_page.html">  <div class="property_box">
-        <img src="./Images/images/prop1pic1.jpg">
-        <div id="price"></div></div></a>
-    
-
-    <a href="Property_page.html"><div class="tile_text">
-            <div id="bedrooms" class="bedrooms"></div>
-            <div id="address"></div>
-             <div id="description"></div></a>
-             <div id="listed">Created:</div>
-     </div>  
-    </div>      
-             
-    
-
-    <div id="prop2" class="property_tile">
-        <a href="product1.html">     
-        <div class="property_box">
-            <img src="./Images/images/prop1pic2.jpg">
-            <div id="price1"></div></div></a>
-        
-        <a href="product1.html"><div class="tile_text">
-                <div id="bedrooms1" class="bedrooms"></div>
-                <div id="address1"></div>
-                <div id="description1"></div></a>
-                <div id="listed1">Created:</div>
-    </div>            
-</div>
-    <div id="prop3" class="property_tile">  
-            <a href="Property_page.html">  <div class="property_box">
-            <img src="./Images/images/prop1pic1.jpg">
-            <div id="price2"></div></div></a>
-        
-    
-        <a href="Property_page.html"><div class="tile_text">
-                <div id="bedrooms2"class="bedrooms"></div>
-                <div id="address2"></div>
-                <div id="description2"></div></a>
-                <div id="listed2">Created:</div>
-        </div>        
-    </div>         
-        
-    
-    <div id="prop4" class="property_tile">
-        <a href="product1.html">     
-        <div class="property_box">
-            <img src="./Images/images/prop1pic2.jpg">
-            <div id="price3"></div></div></a>
-        
-        <a href="product1.html"><div class="tile_text">
-                <div id="bedrooms3"class="bedrooms"></div>
-                <div id="address3"></div>
-                <div id="description3"></div></a>
-                <div id="listed3">Created:</div>
-    </div>  
-</div>
-    <div id="prop5" class="property_tile">
-            <a href="product1.html">     
-            <div class="property_box">
-                <img src="./Images/images/prop1pic2.jpg">
-                <div id="price4"></div></div></a>
-            
-            <a href="product1.html"><div class="tile_text">
-                    <div id="bedrooms4"class="bedrooms"></div>
-                    <div id="address4"></div>
-                    <div id="description4"></div></a>
-                    <div id="listed4">Created:</div>
-        </div> 
     </div>
-<script>
-var data={
-	"properties": [
-        {
-            "id":"prop1",
-			"type":"House",
-            "bedrooms":3,
-			"price":750000,
-			"tenure":"Freehold",
-			"description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-			"location":"Petts Wood Road, Petts Wood, Orpington",
-			"picture":"images/prop1pic1small.jpg",
-			"url":"properties/prop1.html",
-            "added": {
-                "month":"October",
-                "day":12,
-                "year":2020
-            }
-        },
-		{
-            "id":"prop2",
-			"type":"Flat",
-            "bedrooms":2,
-			"price":399995,
-			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/prop2pic1small.jpg",
-			"url":"properties/prop2.html",
-            "added": {
-                "month":"September",
-                "day":14,
-                "year":2020
-            }
-        },
-        {
-            "id":"prop3",
-			"type":"House",
-            "bedrooms":4,
-			"price":3999999,
-			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/prop2pic1small.jpg",
-			"url":"properties/prop2.html",
-            "added": {
-                "month":"April",
-                "day":24,
-                "year":2020
-            }
-        },
-        {
-            "id":"prop4",
-			"type":"Flat",
-            "bedrooms":1,
-			"price":299995,
-			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/prop2pic1small.jpg",
-			"url":"properties/prop2.html",
-            "added": {
-                "month":"December",
-                "day":4,
-                "year":2020
-            }
-        },
-        {
-            "id":"prop5",
-			"type":"House",
-            "bedrooms":2,
-			"price":500000,
-			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/prop2pic1small.jpg",
-			"url":"properties/prop2.html",
-            "added": {
-                "month":"January",
-                "day":1,
-                "year":2020
-            }
+
+    <div id="filters">
+        <h1>Filters</h1>
+        <fieldset>
+            <label for="type">Select Building Type</label>
+            <select name="type" id="type">
+                <option value="Any" selected>Any</option>
+                <option value="Flat">Flat</option>
+                <option value="House">House</option>
+            </select>
+        </fieldset>
+
+    </div>
+    <div id="properties">
+
+    </div>
+
+
+    <script>
+        var data = {
+            "properties": [
+                {
+                    "id": "prop1",
+                    "type": "House",
+                    "bedrooms": 3,
+                    "price": 750000,
+                    "tenure": "Freehold",
+                    "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+                    "location": "Petts Wood Road, Petts Wood, Orpington",
+                    "picture": "images/prop1pic1small.jpg",
+                    "url": "properties/prop1.html",
+                    "added": {
+                        "month": "October",
+                        "day": 12,
+                        "year": 2020
+                    }
+                },
+                {
+                    "id": "prop2",
+                    "type": "Flat",
+                    "bedrooms": 2,
+                    "price": 399995,
+                    "tenure": "Freehold",
+                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+                    "location": "Crofton Road Orpington BR6",
+                    "picture": "images/prop2pic1small.jpg",
+                    "url": "properties/prop2.html",
+                    "added": {
+                        "month": "September",
+                        "day": 14,
+                        "year": 2020
+                    }
+                },
+                {
+                    "id": "prop3",
+                    "type": "House",
+                    "bedrooms": 4,
+                    "price": 3999999,
+                    "tenure": "Freehold",
+                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+                    "location": "Crofton Road Orpington BR6",
+                    "picture": "images/prop2pic1small.jpg",
+                    "url": "properties/prop2.html",
+                    "added": {
+                        "month": "April",
+                        "day": 24,
+                        "year": 2020
+                    }
+                },
+                {
+                    "id": "prop4",
+                    "type": "Flat",
+                    "bedrooms": 1,
+                    "price": 299995,
+                    "tenure": "Freehold",
+                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+                    "location": "Crofton Road Orpington BR6",
+                    "picture": "images/prop2pic1small.jpg",
+                    "url": "properties/prop2.html",
+                    "added": {
+                        "month": "December",
+                        "day": 4,
+                        "year": 2020
+                    }
+                },
+                {
+                    "id": "prop5",
+                    "type": "House",
+                    "bedrooms": 2,
+                    "price": 500000,
+                    "tenure": "Freehold",
+                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+                    "location": "Crofton Road Orpington BR6",
+                    "picture": "images/prop2pic1small.jpg",
+                    "url": "properties/prop2.html",
+                    "added": {
+                        "month": "January",
+                        "day": 1,
+                        "year": 2020
+                    }
+                }
+            ]
         }
-]}
 
-document.getElementById("bedrooms").innerHTML=data.properties[0].bedrooms + " Bedroom ";
-document.getElementById("address").innerHTML=data.properties[0].type+" "+ data.properties[0].location;
-document.getElementById("description").innerHTML=data.properties[0].description;
-document.getElementById("listed").innerHTML="Created: "+data.properties[0].added.day + "/" + data.properties[0].added.month + "/" + data.properties[0].added.year;
-document.getElementById("price").innerHTML= "£" + data.properties[0].price;
+        // Load Function
+        $(data.properties).each(function (index) {
 
-document.getElementById("bedrooms1").innerHTML=data.properties[1].bedrooms + " Bedroom ";
-document.getElementById("address1").innerHTML=data.properties[1].type+" "+ data.properties[1].location;
-document.getElementById("description1").innerHTML=data.properties[1].description;
-document.getElementById("listed1").innerHTML="Created: "+data.properties[1].added.day + "/" + data.properties[1].added.month + "/" + data.properties[1].added.year;
-document.getElementById("price1").innerHTML= "£" + data.properties[1].price;
+            $('#properties').append('<div class="property_tile ' + data.properties[index].type + '" > \
+                <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
+                    <div class="property_box"> \
+                        <img src="'+ data.properties[index].picture + '"> \
+                        <div id="price">£' + data.properties[index].price + '\
+                        </div> \
+                    </div> \
+                </a> \
+                <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
+                    <div class="tile_text"> \
+                        <div id="bedrooms" class="bedrooms">' + data.properties[index].bedrooms + ' Bedroom ' + data.properties[index].type +'</div> \
+                        <div id="address">'+ data.properties[index].location + '</div> \
+                        <div id="description">' + data.properties[index].description + '</div> \
+                    </div> \
+                </a> \
+                <div id="listed">Created: ' + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year + '\
+                </div> \
+            </div>');
 
-document.getElementById("bedrooms2").innerHTML=data.properties[2].bedrooms + " Bedroom ";
-document.getElementById("address2").innerHTML=data.properties[2].type+" "+ data.properties[2].location;
-document.getElementById("description2").innerHTML=data.properties[2].description;
-document.getElementById("listed2").innerHTML="Created: "+data.properties[2].added.day + "/" + data.properties[2].added.month + "/" + data.properties[2].added.year;
-document.getElementById("price2").innerHTML= "£" + data.properties[2].price;
+        });
 
-document.getElementById("bedrooms3").innerHTML=data.properties[3].bedrooms + " Bedroom ";
-document.getElementById("address3").innerHTML=data.properties[3].type+" "+ data.properties[3].location;
-document.getElementById("description3").innerHTML=data.properties[3].description;
-document.getElementById("listed3").innerHTML="Created: "+data.properties[3].added.day + "/" + data.properties[3].added.month + "/" + data.properties[3].added.year;
-document.getElementById("price3").innerHTML= "£" + data.properties[3].price;
 
-document.getElementById("bedrooms4").innerHTML=data.properties[4].bedrooms + " Bedroom ";
-document.getElementById("address4").innerHTML=data.properties[4].type+" "+ data.properties[4].location;
-document.getElementById("description4").innerHTML=data.properties[4].description;
-document.getElementById("listed4").innerHTML="Created: "+data.properties[4].added.day + "/" + data.properties[4].added.month + "/" + data.properties[4].added.year;
-document.getElementById("price4").innerHTML= "£" + data.properties[4].price;
-</script>
+        // Dropdown update function
+        $( "#type" ).change(function() {
+
+            if(this.value == "House"){
+                $(".Flat").css("display", "none");
+                $(".House").css("display", "block");
+            }
+            else if(this.value == "Flat"){
+                $(".House").css("display", "none");
+                $(".Flat").css("display", "block");
+            } else {
+                $(".House").css("display", "block");
+                $(".Flat").css("display", "block");
+            }
+        });
+        
+        
+    </script>
 </body>
+
 </html>
