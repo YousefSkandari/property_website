@@ -46,12 +46,19 @@
         display: inline-block;
         margin: 10px;
     }
+    #price{
+        color: #008080;
+        font-weight: bold;
 
+    }
     .bedrooms {
         color: #008080;
         font-weight: bold;
     }
-
+    #listed{
+        font-size:50%;
+        color: #999999;
+    }
     fieldset {
         border: 0;
     }
@@ -68,7 +75,14 @@
         text-decoration: none;
         color: black;
     }
-
+    a:active {
+        text-decoration: none;
+        color: black;
+    }
+    a:visited {
+        text-decoration: none;
+        color: black;
+    }
 
 
     .topnav {
@@ -175,7 +189,7 @@
     <div class="topnav">
         <div class="search-container">
             <form action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search">
+                <input id="myInput" type="text" placeholder="Search.." name="search">
 
             </form>
         </div>
@@ -294,7 +308,7 @@
                 <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
                     <div class="property_box"> \
                         <img src="'+ data.properties[index].picture + '"> \
-                        <div id="price">£' + data.properties[index].price + '\
+                        <div id="price">£' + data.properties[index].price +' '  + data.properties[index].tenure +  '\
                         </div> \
                     </div> \
                 </a> \
@@ -328,7 +342,14 @@
             }
         });
         
-        
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+        $(".property_tile").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+        });
+    });
     </script>
 </body>
 
