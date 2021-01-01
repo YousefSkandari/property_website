@@ -207,6 +207,26 @@
                 <option value="Flat">Flat</option>
                 <option value="House">House</option>
             </select>
+            <label for="mimaBedroom">Min-Max Bedrooms</label>
+            <select name="minBedroom" id="minBedroom">
+                <option value="Any" selected>Any</option>
+                <option value="1" >1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <select name="minBedroom" id="maxBedroom">
+                <option value="Any" selected>Any</option>
+                <option value="1" >1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
         </fieldset>
 
     </div>
@@ -326,7 +346,7 @@
         });
 
 
-        // Dropdown update function
+        // Dropdown update function.
         $( "#type" ).change(function() {
 
             if(this.value == "House"){
@@ -342,6 +362,7 @@
             }
         });
         
+        //Searching for things. 
     $(document).ready(function(){
         $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -350,6 +371,12 @@
         });
         });
     });
+    //min and max bedrooms filter. 
+//var bedrooms = data.properties[index].bedrooms;
+
+//$('#minBedroom').change(function (){
+  //  if (bedrooms >= document.getElementById("#minBedroom"));
+    //}
     </script>
 </body>
 

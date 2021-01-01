@@ -319,29 +319,47 @@
   .price {
     float: left;
   }
+  .container{
+			width: 800px;
+			margin: 0 auto;
+		}
+
+
+
+		ul.tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		ul.tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 10px 15px;
+			cursor: pointer;
+		}
+
+		ul.tabs li.current{
+			background: #ededed;
+			color: #222;
+		}
+
+		.tab-content{
+			display: none;
+			background: #ededed;
+			padding: 15px;
+		}
+
+		.tab-content.current{
+			display: inherit;
+		}
 </style>
 
 <body>
   <div class="topnav">
-    <div class="search-container">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-      </form>
-    </div>
+    <input type="button"onclick="location.href='./property_search.html';" value="Go back"/>
   </div>
 
-  <div id="filters">
-    <h1>Filters</h1>
-    <fieldset>
-      <label for="speed">Select Building Type</label>
-      <select name="speed" id="speed">
-        <option value="flat">Flat</option>
-        <option value="house">House</option>
-        <option value="any">Any</option>
-      </select>
-    </fieldset>
-
-  </div>
   <div id="products">
 
     <div id="prop1" class="property_tile">
@@ -354,36 +372,36 @@
 
           <div class="mySlides fade">
 
-            <img src="../Property site/Images/images/prop1pic1.jpg" style="width:100%">
+            <img src="./images/prop1pic1.jpg" style="width:100%">
             <div class="text">Front of house</div>
           </div>
 
           <div class="mySlides fade">
 
-            <img src="../Property site/Images/images/prop1pic2.jpg" style="width:100%">
+            <img src="./images/prop1pic2.jpg" style="width:100%">
             <div class="text">Kitchen</div>
           </div>
 
           <div class="mySlides fade">
 
-            <img src="../Property site/Images/images/prop1pic3.jpg" style="width:100%">
+            <img src="./images/prop1pic3.jpg" style="width:100%">
             <div class="text">Living Room</div>
           </div>
 
           <div class="mySlides fade">
 
-            <img src="../Property site/Images/images/prop1pic4.jpg" style="width:100%">
+            <img src="./images/prop1pic4.jpg" style="width:100%">
             <div class="text">Fire place</div>
           </div>
 
           <div class="mySlides fade">
 
-            <img src="../Property site/Images/images/prop1pic5.jpg" style="width:100%">
+            <img src="./images/prop1pic5.jpg" style="width:100%">
             <div class="text">Garden</div>
           </div>
 
           <div class="mySlides fade">
-            <img src="../Property site/Images/images/prop1pic6.jpg" style="width:100%">
+            <img src="./images/prop1pic6.jpg" style="width:100%">
             <div class="text">Toilet</div>
           </div>
 
@@ -404,11 +422,33 @@
         </div>
 
       </div>
-      <h2>Description</h2>
-      <div id="description"></div></a>
-      <div id="listed">Created:</div>
+      <div class="container">
+
+          <ul class="tabs">
+            <li class="tab-link current" data-tab="tab-1">Description</li>
+            <li class="tab-link" data-tab="tab-2">Tab Two</li>
+            <li class="tab-link" data-tab="tab-3">Tab Three</li>
+          </ul>
+        
+          <div id="tab-1" class="tab-content current">
+              <div id="description"><div id="listed">Created:</div>
+          </div>
+          <div id="tab-2" class="tab-content">
+             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div id="tab-3" class="tab-content">
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </div>
+          <div id="tab-4" class="tab-content">
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+        
+        </div><!-- container -->
+        </div>
+      
     </div>
     <script>
+      //carosel 
       var slideIndex = 1;
       showSlides(slideIndex);
 
@@ -435,6 +475,22 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
       }
+
+
+      //tabs
+      $(document).ready(function(){
+	
+	$('ul.tabs li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('ul.tabs li').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+
+})
     </script>
     <script>
 
