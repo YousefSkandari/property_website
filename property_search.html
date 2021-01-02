@@ -215,7 +215,7 @@
             </select>
             <label for="mimaBedroom">Min-Max Bedrooms</label>
             <select class="bedroom_select" name="minBedroom" id="minBedroom">
-                <option value="Any" selected>Any</option>
+                <option value="0" selected>Any</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -224,7 +224,7 @@
                 <option value="6">6</option>
             </select>
             <select class="bedroom_select" name="maxBedroom" id="maxBedroom">
-                <option value="Any" selected>Any</option>
+                <option value="100000" selected>Any</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -364,13 +364,6 @@
         $(".bedroom_select").on("change", function () {
             var minBed = $("#minBedroom").val();
             var maxBed = $("#maxBedroom").val();
-
-            // Remove errors from comparing numbers to string by setting value to null.
-            if (minBed == "Any")
-                minBed = 0;
-            if (maxBed == "Any")
-                maxBed = 100000;
-
 
             // Return error if max bedrooms is less than min bedrooms.
             if(maxBed < minBed){
