@@ -371,6 +371,12 @@
             if (maxBed == "Any")
                 maxBed = 100000;
 
+
+            // Return error if max bedrooms is less than min bedrooms.
+            if(maxBed < minBed){
+                return $('#properties').html('<div class="property_tile">Invalid range</div/>');
+            }
+
             // Filter the data from the JSON to include only selected range.
             property_list = (data.properties.filter(function (item) {
                 return item.bedrooms >= minBed && item.bedrooms <= maxBed;
