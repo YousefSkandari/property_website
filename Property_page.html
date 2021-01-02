@@ -13,6 +13,8 @@
     margin: 0;
     background: #dbdbdb;
     -webkit-font-smoothing: antialiased;
+
+
   }
 
   * {
@@ -30,6 +32,7 @@
 
   img {
     vertical-align: middle;
+    width: 100%;
   }
 
   /* Slideshow container */
@@ -147,14 +150,10 @@
     background: #ffffff;
     height: 100%;
     padding: 5%;
-    margin-left: 45%;
-    margin-right: 45%;
-
   }
 
   .property_box {
-    width: 70%;
-
+    width: 100%;
   }
 
   .tile_text {
@@ -195,10 +194,6 @@
     padding-top: 1%;
   }
 
-  #description {
-    font-size: 60%;
-  }
-
   #price {
     font-size: 75%;
     margin: 10px;
@@ -209,54 +204,6 @@
     margin-right: 10%;
     font-size: 50%;
   }
-
-  #listed1 {
-    padding-top: 1%;
-    margin-right: 10%;
-    font-size: 50%;
-    color: #8c8c8c;
-  }
-
-  #bedrooms1 {
-    font-size: 50%;
-    color: #008080;
-    font-weight: bold;
-  }
-
-  #address1 {
-    font-size: 50%;
-    font-weight: bold;
-    padding-bottom: 1%;
-    padding-top: 1%;
-  }
-
-  #description1 {
-    font-size: 50%;
-  }
-
-  #price1 {
-    font-size: 75%;
-    margin-left: 65%;
-  }
-
-  fieldset {
-    border: 0;
-  }
-
-  label {
-    display: block;
-  }
-
-  .overflow {
-    height: 200px;
-  }
-
-  a:link {
-    text-decoration: none;
-    color: black;
-  }
-
-
 
   .topnav {
     overflow: hidden;
@@ -313,7 +260,7 @@
   }
 
   #prop1 {
-    display: table-cell;
+    width: 100%;
   }
 
   .price {
@@ -323,8 +270,6 @@
 			width: 800px;
 			margin: 0 auto;
 		}
-
-
 
 		ul.tabs{
 			margin: 0px;
@@ -337,6 +282,7 @@
 			display: inline-block;
 			padding: 10px 15px;
 			cursor: pointer;
+      font-size: 50%;
 		}
 
 		ul.tabs li.current{
@@ -353,11 +299,35 @@
 		.tab-content.current{
 			display: inherit;
 		}
+    #go-back{
+      border: solid 1px #ffffff;
+      background: #008080;
+      color: white;
+      margin: 10px;
+      height: 50px;
+      width: 125px;
+      cursor: pointer;
+      border-radius: 50px;
+    }
+    #go-back:hover{
+      border: solid 1px #ededed;
+      background: #ffffff;
+      color: black;
+      margin: 10px;
+      height: 50px;
+      width: 125px;
+      cursor: pointer;
+      border-radius: 50px;
+    }
+    #carousel{
+      width: 100%;
+      align-content: center;
+    }
 </style>
 
 <body>
   <div class="topnav">
-    <input type="button"onclick="location.href='./property_search.html';" value="Go back"/>
+    <input id="go-back" type="button"onclick="location.href='./property_search.html';" value="Go back"/>
   </div>
 
   <div id="products">
@@ -367,17 +337,18 @@
       <div id="address"></div>
       <div id="price" class="price"></div>
       <div class="property_box">
-
         <div class="slideshow-container" >
 
-          <div id="carousel">
-            
-          </div>
+            <div id="carousel">
 
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              </div>
+          
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-        </div>
+
+        </div>          
+
         <br>
 
         <div style="text-align:center">
@@ -387,6 +358,7 @@
           <span class="dot" onclick="currentSlide(4)"></span>
           <span class="dot" onclick="currentSlide(5)"></span>
           <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
 
         </div>
 
@@ -459,7 +431,7 @@
 		$("#"+tab_id).addClass('current');
 	})
 
-})
+});
     </script>
     <script>
         var data = {
@@ -602,7 +574,7 @@
           document.getElementById("bedrooms").innerHTML = data.properties[index].bedrooms + " Bedroom "
           document.getElementById("address").innerHTML = data.properties[index].type + " " + data.properties[index].location;
           document.getElementById("description").innerHTML = data.properties[index].description;
-          // document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
+          //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
           document.getElementById("price").innerHTML = "£" + data.properties[index].price;
           
           $(data.properties[index].carousel).each(function (i) {
