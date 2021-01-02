@@ -46,19 +46,23 @@
         display: inline-block;
         margin: 10px;
     }
-    #price{
+
+    #price {
         color: #008080;
         font-weight: bold;
 
     }
+
     .bedrooms {
         color: #008080;
         font-weight: bold;
     }
-    #listed{
-        font-size:50%;
+
+    #listed {
+        font-size: 50%;
         color: #999999;
     }
+
     fieldset {
         border: 0;
     }
@@ -75,10 +79,12 @@
         text-decoration: none;
         color: black;
     }
+
     a:active {
         text-decoration: none;
         color: black;
     }
+
     a:visited {
         text-decoration: none;
         color: black;
@@ -208,18 +214,18 @@
                 <option value="House">House</option>
             </select>
             <label for="mimaBedroom">Min-Max Bedrooms</label>
-            <select name="minBedroom" id="minBedroom">
+            <select class="bedroom_select" name="minBedroom" id="minBedroom">
                 <option value="Any" selected>Any</option>
-                <option value="1" >1</option>
+                <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
             </select>
-            <select name="minBedroom" id="maxBedroom">
+            <select class="bedroom_select" name="maxBedroom" id="maxBedroom">
                 <option value="Any" selected>Any</option>
-                <option value="1" >1</option>
+                <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -236,6 +242,8 @@
 
 
     <script>
+
+
         var data = {
             "properties": [
                 {
@@ -321,31 +329,6 @@
             ]
         }
 
-        // Load Function
-        $(data.properties).each(function (index) {
-
-            $('#properties').append('<div class="property_tile" property-type="' + data.properties[index].type + '" bedrooms="' + data.properties[index].bedrooms + '" > \
-                <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
-                    <div class="property_box"> \
-                        <img src="'+ data.properties[index].picture + '"> \
-                        <div id="price">£' + data.properties[index].price + ' ' + data.properties[index].tenure + '\
-                        </div> \
-                    </div> \
-                </a> \
-                <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
-                    <div class="tile_text"> \
-                        <div id="bedrooms" class="bedrooms">' + data.properties[index].bedrooms + ' Bedroom ' + data.properties[index].type + '</div> \
-                        <div id="address">'+ data.properties[index].location + '</div> \
-                        <div id="description">' + data.properties[index].description + '</div> \
-                    </div> \
-                </a> \
-                <div id="listed">Created: ' + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year + '\
-                </div> \
-            </div>');
-
-        });
-
-
         // Property type dropdown function.
         $("#type").change(function () {
 
@@ -361,22 +344,66 @@
                 $('[property-type="Flat"]').css("display", "block");
             }
         });
-        
-        //Searching for things. 
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-        $(".property_tile").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-        });
-    });
-    //min and max bedrooms filter. 
-//var bedrooms = data.properties[index].bedrooms;
 
-//$('#minBedroom').change(function (){
-  //  if (bedrooms >= document.getElementById("#minBedroom"));
-    //}
+        // Searching for things. 
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".property_tile").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            // Trigger results function on page load
+            $(".bedroom_select").trigger('change');
+        });
+
+
+        // min and max bedrooms filter. 
+
+        $(".bedroom_select").on("change", function () {
+            var minBed = $("#minBedroom").val();
+            var maxBed = $("#maxBedroom").val();
+
+            // Remove errors from comparing numbers to string by setting value to null.
+            if (minBed == "Any")
+                minBed = 0;
+            if (maxBed == "Any")
+                maxBed = 100000;
+
+            // Filter the data from the JSON to include only selected range.
+            property_list = (data.properties.filter(function (item) {
+                return item.bedrooms >= minBed && item.bedrooms <= maxBed;
+            }));
+
+            // Set HTML to blank to prevent appending new results to old results.
+            $('#properties').html("");
+
+            $(property_list).each(function (index) {
+
+                $('#properties').append('<div class="property_tile" property-type="' + property_list[index].type + '" bedrooms="' + property_list[index].bedrooms + '" > \
+                    <a href="property_page.html?propertyid='+ property_list[index].id + '"> \
+                        <div class="property_box"> \
+                            <img src="'+ property_list[index].picture + '"> \
+                            <div id="price">£' + property_list[index].price + ' ' + property_list[index].tenure + '\
+                            </div> \
+                        </div> \
+                    </a> \
+                    <a href="property_page.html?propertyid='+ property_list[index].id + '"> \
+                        <div class="tile_text"> \
+                            <div id="bedrooms" class="bedrooms">' + property_list[index].bedrooms + ' Bedroom ' + property_list[index].type + '</div> \
+                            <div id="address">'+ property_list[index].location + '</div> \
+                            <div id="description">' + property_list[index].description + '</div> \
+                        </div> \
+                    </a> \
+                    <div id="listed">Created: ' + property_list[index].added.day + "/" + property_list[index].added.month + "/" + property_list[index].added.year + '\
+                    </div> \
+                </div>');
+
+            });
+        });
+
+
     </script>
 </body>
 
