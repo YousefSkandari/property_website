@@ -324,17 +324,17 @@
         // Load Function
         $(data.properties).each(function (index) {
 
-            $('#properties').append('<div class="property_tile ' + data.properties[index].type + '" > \
+            $('#properties').append('<div class="property_tile" property-type="' + data.properties[index].type + '" bedrooms="' + data.properties[index].bedrooms + '" > \
                 <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
                     <div class="property_box"> \
                         <img src="'+ data.properties[index].picture + '"> \
-                        <div id="price">£' + data.properties[index].price +' '  + data.properties[index].tenure +  '\
+                        <div id="price">£' + data.properties[index].price + ' ' + data.properties[index].tenure + '\
                         </div> \
                     </div> \
                 </a> \
                 <a href="property_page.html?propertyid='+ data.properties[index].id + '"> \
                     <div class="tile_text"> \
-                        <div id="bedrooms" class="bedrooms">' + data.properties[index].bedrooms + ' Bedroom ' + data.properties[index].type +'</div> \
+                        <div id="bedrooms" class="bedrooms">' + data.properties[index].bedrooms + ' Bedroom ' + data.properties[index].type + '</div> \
                         <div id="address">'+ data.properties[index].location + '</div> \
                         <div id="description">' + data.properties[index].description + '</div> \
                     </div> \
@@ -346,19 +346,19 @@
         });
 
 
-        // Dropdown update function.
-        $( "#type" ).change(function() {
+        // Property type dropdown function.
+        $("#type").change(function () {
 
-            if(this.value == "House"){
-                $(".Flat").css("display", "none");
-                $(".House").css("display", "block");
+            if (this.value == "House") {
+                $('[property-type="Flat"]').css("display", "none");
+                $('[property-type="House"]').css("display", "block");
             }
-            else if(this.value == "Flat"){
-                $(".House").css("display", "none");
-                $(".Flat").css("display", "block");
+            else if (this.value == "Flat") {
+                $('[property-type="House"]').css("display", "none");
+                $('[property-type="Flat"]').css("display", "block");
             } else {
-                $(".House").css("display", "block");
-                $(".Flat").css("display", "block");
+                $('[property-type="House"]').css("display", "block");
+                $('[property-type="Flat"]').css("display", "block");
             }
         });
         
