@@ -432,7 +432,8 @@ $(document).ready(function(){
 });
     </script>
     <script>
-        var data = {
+
+      var data = {
             "properties": [
                 {
                     "id": "prop1",
@@ -454,7 +455,8 @@ $(document).ready(function(){
                         ],
                     "propplan":'images/prop2Plan.jpg',
                     "url": "properties/prop1.html",
-                    "maps":'<iframe width="600" height="450"frameborder="0" style="border:0"src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDONWJ4yTE8tcziSksNRrUzT78N-OjjLMk&q=Space+Needle,Seattle+WA" allowfullscreen></iframe>',
+                    "lat":-25.5,
+                    "lng":-25.5,                   
                     "added": {
                         "month": "October",
                         "day": 12,
@@ -481,7 +483,8 @@ $(document).ready(function(){
                         ],
                     "propplan":'images/prop1Plan.jpg',
                     "url": "properties/prop2.html",
-                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e1d4319bad5%3A0x69d41827f2f7e7cf!2sbp!5e0!3m2!1sen!2suk!4v1609684708012!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
+                    "lat":-25.5,
+                    "lng":-25.5,
                     "added": {
                         "month": "September",
                         "day": 14,
@@ -508,7 +511,8 @@ $(document).ready(function(){
                         ],
                     "propplan":'images/prop2Plan.jpg',
                     "url": "properties/prop2.html",
-                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487611e0158cfb67%3A0xc7647bda4f058be!2sMirage%20Smart%20Homes!5e0!3m2!1sen!2suk!4v1609684736567!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
+                    "lat":-25.5,
+                    "lng":-25.5,                    
                     "added": {
                         "month": "April",
                         "day": 24,
@@ -535,7 +539,8 @@ $(document).ready(function(){
                         ],
                     "propplan":'images/prop1Plan.jpg',
                     "url": "properties/prop2.html",
-                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e1d675e296b%3A0x90f23c2309c38886!2sHorn%20Lane%20Post%20Office!5e0!3m2!1sen!2suk!4v1609684786995!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
+                    "lat":-25.5,
+                    "lng":-25.5,
                     "added": {
                         "month": "December",
                         "day": 4,
@@ -562,7 +567,8 @@ $(document).ready(function(){
                         ],
                     "propplan":'images/prop2Plan.jpg',
                     "url": "properties/prop2.html",
-                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e20288eb949%3A0xafae07a4ceb9ea54!2sSt%20Dunstans%2C%20East%20Acton!5e0!3m2!1sen!2suk!4v1609684830623!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
+                    "lat":-25.5,
+                    "lng":-25.5,                    
                     "added": {
                         "month": "January",
                         "day": 1,
@@ -571,7 +577,6 @@ $(document).ready(function(){
                 }
             ]
         }
-
       const urlParams = new URLSearchParams(window.location.search);
       const urlpropertyid = urlParams.get('propertyid');
 
@@ -584,7 +589,7 @@ $(document).ready(function(){
           document.getElementById("description").innerHTML = data.properties[index].description;
           document.getElementById("price").innerHTML = "£" + data.properties[index].price;
           document.getElementById("maps").innerHTML = data.properties[index].maps;
-          document.getElementById("propplan").innerHTML = data.properties[index].propplan;
+          //document.getElementById("propplan").innerHTML = data.properties[index].propplan;
           //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
 
 
@@ -598,6 +603,9 @@ $(document).ready(function(){
               </div>');
 
               });
+          $(data.properties[index].propplan).each(function(index){
+            $('#propplan').append('<img src="'+ data.properties[index].propplan +'">');
+          })
           }
       });
 
