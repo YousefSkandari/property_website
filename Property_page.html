@@ -5,7 +5,8 @@
   <title>Home</title>
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDONWJ4yTE8tcziSksNRrUzT78N-OjjLMk&callback=initMap"
+type="text/javascript"></script>
 <style>
   body {
     font-family: Arial, Helvetica, sans-serif;
@@ -262,10 +263,11 @@
   #prop1 {
     width: 100%;
   }
+  #price {
+        color: #008080;
+        font-weight: bold;
 
-  .price {
-    float: left;
-  }
+    }
   .container{
 			width: 800px;
 			margin: 0 auto;
@@ -367,21 +369,18 @@
 
           <ul class="tabs">
             <li class="tab-link current" data-tab="tab-1">Description</li>
-            <li class="tab-link" data-tab="tab-2">Tab Two</li>
-            <li class="tab-link" data-tab="tab-3">Tab Three</li>
+            <li class="tab-link" data-tab="tab-2">Map</li>
+            <li class="tab-link" data-tab="tab-3">Blueprint</li>
           </ul>
         
           <div id="tab-1" class="tab-content current">
               <div id="description"><div id="listed">Created:</div>
           </div>
           <div id="tab-2" class="tab-content">
-             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div id="maps"></div>
           </div>
           <div id="tab-3" class="tab-content">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          </div>
-          <div id="tab-4" class="tab-content">
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <div id="propplan"></div>
           </div>
         
         </div><!-- container -->
@@ -416,11 +415,10 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
       }
-
-
+</script>
+<script>
       //tabs
-      $(document).ready(function(){
-	
+$(document).ready(function(){	
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
 
@@ -454,7 +452,9 @@
                         "images/carousel6.jpg",
                         "images/carousel7.jpg"
                         ],
+                    "propplan":'images/prop2Plan.jpg',
                     "url": "properties/prop1.html",
+                    "maps":'<iframe width="600" height="450"frameborder="0" style="border:0"src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDONWJ4yTE8tcziSksNRrUzT78N-OjjLMk&q=Space+Needle,Seattle+WA" allowfullscreen></iframe>',
                     "added": {
                         "month": "October",
                         "day": 12,
@@ -479,7 +479,9 @@
                         "images/carousel6.jpg",
                         "images/carousel7.jpg"
                         ],
+                    "propplan":'images/prop1Plan.jpg',
                     "url": "properties/prop2.html",
+                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e1d4319bad5%3A0x69d41827f2f7e7cf!2sbp!5e0!3m2!1sen!2suk!4v1609684708012!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
                     "added": {
                         "month": "September",
                         "day": 14,
@@ -504,7 +506,9 @@
                         "images/carousel6.jpg",
                         "images/carousel7.jpg"
                         ],
+                    "propplan":'images/prop2Plan.jpg',
                     "url": "properties/prop2.html",
+                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487611e0158cfb67%3A0xc7647bda4f058be!2sMirage%20Smart%20Homes!5e0!3m2!1sen!2suk!4v1609684736567!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
                     "added": {
                         "month": "April",
                         "day": 24,
@@ -529,7 +533,9 @@
                         "images/carousel6.jpg",
                         "images/carousel7.jpg"
                         ],
+                    "propplan":'images/prop1Plan.jpg',
                     "url": "properties/prop2.html",
+                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e1d675e296b%3A0x90f23c2309c38886!2sHorn%20Lane%20Post%20Office!5e0!3m2!1sen!2suk!4v1609684786995!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
                     "added": {
                         "month": "December",
                         "day": 4,
@@ -554,7 +560,9 @@
                         "images/carousel6.jpg",
                         "images/carousel7.jpg"
                         ],
+                    "propplan":'images/prop2Plan.jpg',
                     "url": "properties/prop2.html",
+                    "maps":'<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e20288eb949%3A0xafae07a4ceb9ea54!2sSt%20Dunstans%2C%20East%20Acton!5e0!3m2!1sen!2suk!4v1609684830623!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
                     "added": {
                         "month": "January",
                         "day": 1,
@@ -571,12 +579,15 @@
 
         if (data.properties[index].id == urlpropertyid) {
 
-          document.getElementById("bedrooms").innerHTML = data.properties[index].bedrooms + " Bedroom "
+          document.getElementById("bedrooms").innerHTML = data.properties[index].bedrooms + " Bedroom ";
           document.getElementById("address").innerHTML = data.properties[index].type + " " + data.properties[index].location;
           document.getElementById("description").innerHTML = data.properties[index].description;
-          //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
           document.getElementById("price").innerHTML = "£" + data.properties[index].price;
-          
+          document.getElementById("maps").innerHTML = data.properties[index].maps;
+          document.getElementById("propplan").innerHTML = data.properties[index].propplan;
+          //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
+
+
           $(data.properties[index].carousel).each(function (i) {
 
               var count = i + 1;
