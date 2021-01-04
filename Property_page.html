@@ -5,8 +5,7 @@
   <title>Home</title>
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDONWJ4yTE8tcziSksNRrUzT78N-OjjLMk&callback=initMap"
-type="text/javascript"></script>
+
 <style>
   body {
     font-family: Arial, Helvetica, sans-serif;
@@ -263,73 +262,79 @@ type="text/javascript"></script>
   #prop1 {
     width: 100%;
   }
+
   #price {
-        color: #008080;
-        font-weight: bold;
+    color: #008080;
+    font-weight: bold;
 
-    }
-  .container{
-			width: 800px;
-			margin: 0 auto;
-		}
+  }
 
-		ul.tabs{
-			margin: 0px;
-			padding: 0px;
-			list-style: none;
-		}
-		ul.tabs li{
-			background: none;
-			color: #222;
-			display: inline-block;
-			padding: 10px 15px;
-			cursor: pointer;
-      font-size: 50%;
-		}
+  .container {
+    width: 800px;
+    margin: 0 auto;
+  }
 
-		ul.tabs li.current{
-			background: #ededed;
-			color: #222;
-		}
+  ul.tabs {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
 
-		.tab-content{
-			display: none;
-			background: #ededed;
-			padding: 15px;
-		}
+  ul.tabs li {
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 50%;
+  }
 
-		.tab-content.current{
-			display: inherit;
-		}
-    #go-back{
-      border: solid 1px #ffffff;
-      background: #008080;
-      color: white;
-      margin: 10px;
-      height: 50px;
-      width: 125px;
-      cursor: pointer;
-      border-radius: 50px;
-    }
-    #go-back:hover{
-      border: solid 1px #ededed;
-      background: #ffffff;
-      color: black;
-      margin: 10px;
-      height: 50px;
-      width: 125px;
-      cursor: pointer;
-      border-radius: 50px;
-    }
-    #carousel{
-      width: 100%;
-      align-content: center;
-    }
+  ul.tabs li.current {
+    background: #ededed;
+    color: #222;
+  }
+
+  .tab-content {
+    display: none;
+    background: #ededed;
+    padding: 15px;
+  }
+
+  .tab-content.current {
+    display: inherit;
+  }
+
+  #go-back {
+    border: solid 1px #ffffff;
+    background: #008080;
+    color: white;
+    margin: 10px;
+    height: 50px;
+    width: 125px;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+  #go-back:hover {
+    border: solid 1px #ededed;
+    background: #ffffff;
+    color: black;
+    margin: 10px;
+    height: 50px;
+    width: 125px;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+  #carousel {
+    width: 100%;
+    align-content: center;
+  }
 </style>
 
 <body>
   <div class="topnav">
-    <input id="go-back" type="button"onclick="location.href='./property_search.html';" value="Go back"/>
+    <input id="go-back" type="button" onclick="location.href='./property_search.html';" value="Go back" />
   </div>
 
   <div id="products">
@@ -339,17 +344,17 @@ type="text/javascript"></script>
       <div id="address"></div>
       <div id="price" class="price"></div>
       <div class="property_box">
-        <div class="slideshow-container" >
+        <div class="slideshow-container">
 
-            <div id="carousel">
+          <div id="carousel">
 
-              </div>
-          
-              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
 
-        </div>          
+        </div>
 
         <br>
 
@@ -367,230 +372,226 @@ type="text/javascript"></script>
       </div>
       <div class="container">
 
-          <ul class="tabs">
-            <li class="tab-link current" data-tab="tab-1">Description</li>
-            <li class="tab-link" data-tab="tab-2">Map</li>
-            <li class="tab-link" data-tab="tab-3">Blueprint</li>
-          </ul>
-        
-          <div id="tab-1" class="tab-content current">
-              <div id="description"><div id="listed">Created:</div>
+        <ul class="tabs">
+          <li class="tab-link current" data-tab="tab-1">Description</li>
+          <li class="tab-link" data-tab="tab-2">Map</li>
+          <li class="tab-link" data-tab="tab-3">Blueprint</li>
+        </ul>
+
+        <div id="tab-1" class="tab-content current">
+          <div id="description">
+            <div id="listed">Created:</div>
           </div>
-          <div id="tab-2" class="tab-content">
-            <div id="maps"></div>
-          </div>
-          <div id="tab-3" class="tab-content">
-            <div id="propplan"></div>
-          </div>
-        
-        </div><!-- container -->
         </div>
-      
+        <div id="tab-2" class="tab-content">
+          <div id="maps"></div>
+        </div>
+        <div id="tab-3" class="tab-content">
+          <div id="propplan"></div>
+        </div>
+
+      </div><!-- container -->
     </div>
-    <script>
-      //carousel 
-      var slideIndex = 1;
-      showSlides(slideIndex);
 
-      function plusSlides(n) {
-        showSlides(slideIndex += n);
+  </div>
+  <script>
+    //carousel 
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
       }
-
-      function currentSlide(n) {
-        showSlides(slideIndex = n);
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
       }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+  <script>
+    //tabs
+    $(document).ready(function () {
+      $('ul.tabs li').click(function () {
+        var tab_id = $(this).attr('data-tab');
 
-      function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+
+        $(this).addClass('current');
+        $("#" + tab_id).addClass('current');
+      })
+
+    });
+  </script>
+  <script>
+
+    var data = {
+      "properties": [
+        {
+          "id": "prop1",
+          "type": "House",
+          "bedrooms": 3,
+          "price": 750000,
+          "tenure": "Freehold",
+          "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+          "location": "Petts Wood Road, Petts Wood, Orpington",
+          "picture": "images/prop1pic1small.jpg",
+          "carousel": [
+            "images/carousel1.jpg",
+            "images/carousel2.jpg",
+            "images/carousel3.jpg",
+            "images/carousel4.jpg",
+            "images/carousel5.jpg",
+            "images/carousel6.jpg",
+            "images/carousel7.jpg"
+          ],
+          "propplan": 'images/prop2Plan.jpg',
+          "url": "properties/prop1.html",
+          "maps": '!1m18!1m12!1m3!1d3135.4559595663677!2d-1.056854248457109!3d51.475278320772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876999b3a7b704b%3A0x20111384b285f76f!2s69%20Long%20Ln%2C%20Reading%20RG31%206YN!5e1!3m2!1sen!2suk!4v1609717902273!5m2!1sen!2suk',
+          "added": {
+            "month": "October",
+            "day": 12,
+            "year": 2020
+          }
+        },
+        {
+          "id": "prop2",
+          "type": "Flat",
+          "bedrooms": 2,
+          "price": 399995,
+          "tenure": "Freehold",
+          "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+          "location": "Crofton Road Orpington BR6",
+          "picture": "images/prop2pic1small.jpg",
+          "carousel": [
+            "images/carousel1.jpg",
+            "images/carousel2.jpg",
+            "images/carousel3.jpg",
+            "images/carousel4.jpg",
+            "images/carousel5.jpg",
+            "images/carousel6.jpg",
+            "images/carousel7.jpg"
+          ],
+          "propplan": 'images/prop1Plan.jpg',
+          "url": "properties/prop2.html",
+          "maps": '!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e1d4319bad5%3A0x69d41827f2f7e7cf!2sbp!5e0!3m2!1sen!2suk!4v1609684708012!5m2!1sen!2suk',
+          "added": {
+            "month": "September",
+            "day": 14,
+            "year": 2020
+          }
+        },
+        {
+          "id": "prop3",
+          "type": "House",
+          "bedrooms": 4,
+          "price": 3999999,
+          "tenure": "Freehold",
+          "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+          "location": "Crofton Road Orpington BR6",
+          "picture": "images/prop2pic1small.jpg",
+          "carousel": [
+            "images/carousel1.jpg",
+            "images/carousel2.jpg",
+            "images/carousel3.jpg",
+            "images/carousel4.jpg",
+            "images/carousel5.jpg",
+            "images/carousel6.jpg",
+            "images/carousel7.jpg"
+          ],
+          "propplan": 'images/prop2Plan.jpg',
+          "url": "properties/prop2.html",
+          "maps": '!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487611e0158cfb67%3A0xc7647bda4f058be!2sMirage%20Smart%20Homes!5e0!3m2!1sen!2suk!4v1609684736567!5m2!1sen!2suk" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
+          "added": {
+            "month": "April",
+            "day": 24,
+            "year": 2020
+          }
+        },
+        {
+          "id": "prop4",
+          "type": "Flat",
+          "bedrooms": 1,
+          "price": 299995,
+          "tenure": "Freehold",
+          "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+          "location": "Crofton Road Orpington BR6",
+          "picture": "images/prop2pic1small.jpg",
+          "carousel": [
+            "images/carousel1.jpg",
+            "images/carousel2.jpg",
+            "images/carousel3.jpg",
+            "images/carousel4.jpg",
+            "images/carousel5.jpg",
+            "images/carousel6.jpg",
+            "images/carousel7.jpg"
+          ],
+          "propplan": 'images/prop1Plan.jpg',
+          "url": "properties/prop2.html",
+          "maps": '!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e1d675e296b%3A0x90f23c2309c38886!2sHorn%20Lane%20Post%20Office!5e0!3m2!1sen!2suk!4v1609684786995!5m2!1sen!2suk',
+          "added": {
+            "month": "December",
+            "day": 4,
+            "year": 2020
+          }
+        },
+        {
+          "id": "prop5",
+          "type": "House",
+          "bedrooms": 2,
+          "price": 500000,
+          "tenure": "Freehold",
+          "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+          "location": "Crofton Road Orpington BR6",
+          "picture": "images/prop2pic1small.jpg",
+          "carousel": [
+            "images/carousel1.jpg",
+            "images/carousel2.jpg",
+            "images/carousel3.jpg",
+            "images/carousel4.jpg",
+            "images/carousel5.jpg",
+            "images/carousel6.jpg",
+            "images/carousel7.jpg"
+          ],
+          "propplan": 'images/prop2Plan.jpg',
+          "url": "properties/prop2.html",
+          "maps": '!1m18!1m12!1m3!1d4966.018256159762!2d-0.27036900648826306!3d51.51304853020976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760e20288eb949%3A0xafae07a4ceb9ea54!2sSt%20Dunstans%2C%20East%20Acton!5e0!3m2!1sen!2suk!4v1609684830623!5m2!1sen!2suk',
+          "added": {
+            "month": "January",
+            "day": 1,
+            "year": 2020
+          }
         }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
-</script>
-<script>
-      //tabs
-$(document).ready(function(){	
-	$('ul.tabs li').click(function(){
-		var tab_id = $(this).attr('data-tab');
+      ]
+    }
 
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlpropertyid = urlParams.get('propertyid');
 
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	})
+    $(data.properties).each(function (index) {
 
-});
-    </script>
-    <script>
+      if (data.properties[index].id == urlpropertyid) {
 
-      var data = {
-            "properties": [
-                {
-                    "id": "prop1",
-                    "type": "House",
-                    "bedrooms": 3,
-                    "price": 750000,
-                    "tenure": "Freehold",
-                    "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-                    "location": "Petts Wood Road, Petts Wood, Orpington",
-                    "picture": "images/prop1pic1small.jpg",
-                    "carousel":[
-                        "images/carousel1.jpg",
-                        "images/carousel2.jpg",
-                        "images/carousel3.jpg",
-                        "images/carousel4.jpg",
-                        "images/carousel5.jpg",
-                        "images/carousel6.jpg",
-                        "images/carousel7.jpg"
-                        ],
-                    "propplan":'images/prop2Plan.jpg',
-                    "url": "properties/prop1.html",
-                    "lat":-25.5,
-                    "lng":-25.5,                   
-                    "added": {
-                        "month": "October",
-                        "day": 12,
-                        "year": 2020
-                    }
-                },
-                {
-                    "id": "prop2",
-                    "type": "Flat",
-                    "bedrooms": 2,
-                    "price": 399995,
-                    "tenure": "Freehold",
-                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-                    "location": "Crofton Road Orpington BR6",
-                    "picture": "images/prop2pic1small.jpg",
-                    "carousel":[
-                        "images/carousel1.jpg",
-                        "images/carousel2.jpg",
-                        "images/carousel3.jpg",
-                        "images/carousel4.jpg",
-                        "images/carousel5.jpg",
-                        "images/carousel6.jpg",
-                        "images/carousel7.jpg"
-                        ],
-                    "propplan":'images/prop1Plan.jpg',
-                    "url": "properties/prop2.html",
-                    "lat":-25.5,
-                    "lng":-25.5,
-                    "added": {
-                        "month": "September",
-                        "day": 14,
-                        "year": 2020
-                    }
-                },
-                {
-                    "id": "prop3",
-                    "type": "House",
-                    "bedrooms": 4,
-                    "price": 3999999,
-                    "tenure": "Freehold",
-                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-                    "location": "Crofton Road Orpington BR6",
-                    "picture": "images/prop2pic1small.jpg",
-                    "carousel":[
-                        "images/carousel1.jpg",
-                        "images/carousel2.jpg",
-                        "images/carousel3.jpg",
-                        "images/carousel4.jpg",
-                        "images/carousel5.jpg",
-                        "images/carousel6.jpg",
-                        "images/carousel7.jpg"
-                        ],
-                    "propplan":'images/prop2Plan.jpg',
-                    "url": "properties/prop2.html",
-                    "lat":-25.5,
-                    "lng":-25.5,                    
-                    "added": {
-                        "month": "April",
-                        "day": 24,
-                        "year": 2020
-                    }
-                },
-                {
-                    "id": "prop4",
-                    "type": "Flat",
-                    "bedrooms": 1,
-                    "price": 299995,
-                    "tenure": "Freehold",
-                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-                    "location": "Crofton Road Orpington BR6",
-                    "picture": "images/prop2pic1small.jpg",
-                    "carousel":[
-                        "images/carousel1.jpg",
-                        "images/carousel2.jpg",
-                        "images/carousel3.jpg",
-                        "images/carousel4.jpg",
-                        "images/carousel5.jpg",
-                        "images/carousel6.jpg",
-                        "images/carousel7.jpg"
-                        ],
-                    "propplan":'images/prop1Plan.jpg',
-                    "url": "properties/prop2.html",
-                    "lat":-25.5,
-                    "lng":-25.5,
-                    "added": {
-                        "month": "December",
-                        "day": 4,
-                        "year": 2020
-                    }
-                },
-                {
-                    "id": "prop5",
-                    "type": "House",
-                    "bedrooms": 2,
-                    "price": 500000,
-                    "tenure": "Freehold",
-                    "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-                    "location": "Crofton Road Orpington BR6",
-                    "picture": "images/prop2pic1small.jpg",
-                    "carousel":[
-                        "images/carousel1.jpg",
-                        "images/carousel2.jpg",
-                        "images/carousel3.jpg",
-                        "images/carousel4.jpg",
-                        "images/carousel5.jpg",
-                        "images/carousel6.jpg",
-                        "images/carousel7.jpg"
-                        ],
-                    "propplan":'images/prop2Plan.jpg',
-                    "url": "properties/prop2.html",
-                    "lat":-25.5,
-                    "lng":-25.5,                    
-                    "added": {
-                        "month": "January",
-                        "day": 1,
-                        "year": 2020
-                    }
-                }
-            ]
-        }
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlpropertyid = urlParams.get('propertyid');
-
-      $(data.properties).each(function (index) {
-
-        if (data.properties[index].id == urlpropertyid) {
-
-          document.getElementById("bedrooms").innerHTML = data.properties[index].bedrooms + " Bedroom ";
-          document.getElementById("address").innerHTML = data.properties[index].type + " " + data.properties[index].location;
-          document.getElementById("description").innerHTML = data.properties[index].description;
-          document.getElementById("price").innerHTML = "£" + data.properties[index].price;
-          document.getElementById("maps").innerHTML = data.properties[index].maps;
-          //document.getElementById("propplan").innerHTML = data.properties[index].propplan;
-          //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
+        document.getElementById("bedrooms").innerHTML = data.properties[index].bedrooms + " Bedroom ";
+        document.getElementById("address").innerHTML = data.properties[index].type + " " + data.properties[index].location;
+        document.getElementById("description").innerHTML = data.properties[index].description;
+        document.getElementById("price").innerHTML = "&#163;" + data.properties[index].price;
+        //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
 
 
           $(data.properties[index].carousel).each(function (i) {
@@ -602,16 +603,17 @@ $(document).ready(function(){
                 <div class="text">'+  count +  '/ '+ data.properties[index].carousel.length +'</div> \
               </div>');
 
-              });
-          $(data.properties[index].propplan).each(function(index){
-            $('#propplan').append('<img src="'+ data.properties[index].propplan +'">');
-          })
-          }
-      });
+        });
+        
+        $('#propplan').append('<img src="' + data.properties[index].propplan + '">');
+        $('#maps').append('<iframe src="https://www.google.com/maps/embed?pb=' + data.properties[index].maps + '" frameborder="0" style="border:0; width: 100%; height: 360px;" allowfullscreen="" aria-hidden="false" tabindex="0">')
+
+      }
+    });
 
 
 
-    </script>
+  </script>
 </body>
 
 </html>
