@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="bootstrap-grid.css">
 </head>
-
 
 <style>
     body {
@@ -44,6 +44,14 @@
         width: 85%;
         display: inline-block;
         margin: 10px;
+    }
+
+    .addBtn {
+        float:right; background: transparent; border: none;
+    }
+
+    .removeBtn {
+        float:right; background: transparent; border: none; color: #be0000;
     }
 
     #price {
@@ -88,7 +96,6 @@
         text-decoration: none;
         color: black;
     }
-
 
     .topnav {
         background-color: #008080;
@@ -157,64 +164,39 @@
         padding-left: 10%;
     }
 
-    #prop1 {
-        display: table-cell;
+    #fav {
+        padding-bottom: 100px;
     }
 
-    #fav {
-        float: right;
-        width: 20%;
-        background: #ccc;
-        text-align: center;
+    #fav .property_tile .tile_text #description, #fav .property_tile #listed {
+        display: none;
     }
+
+    #fav .property_tile #price {
+        font-size: small;
+    }
+
+    #fav .property_tile .row .addBtn {
+        display: none;
+    }
+
+    #fav .property_tile .row .removeBtn {
+        display: block!important;
+    }
+
+    #properties .property_tile .row .addBtn {
+        display: block;
+    }
+
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $(function () {
-        $("#prop1").draggable
-            ({
-                revert: 'invalid',
-                snap: '#fav',
-                snapMode: 'inner',
-                snapTolerance: '22'
-            });
-
-        $("#prop1").data({
-            'originalLeft': $("#prop1").css('left'),
-            'origionalTop': $("#prop1").css('top')
-        });
-
-
-        $("#fav").droppable
-            ({
-                accept: '#prop1',
-                drop: function (event, ui) {
-                    $(this).find("#prop1").html();
-                }
-            });
-
-        $(".reset").click(function () {
-            $("#prop1").css({
-                'left': $("#prop1").data('originalLeft'),
-                'top': $("#prop1").data('origionalTop')
-            }
-            );
-        });
-    });
-</script>
 
 <body>
     <div class="topnav">
         <div class="search-container">
-            <form action="/action_page.php">
-                <input id="myInput" type="text" placeholder="Search.." name="search">
-
-            </form>
+                <input id="search_bar" type="text" placeholder="Search.." name="search">
         </div>
-        <div id="fav">
-            Favourites
-        </div>
+        
     </div>
 
     <div id="filters">
@@ -249,12 +231,44 @@
         </fieldset>
 
     </div>
-    <div id="properties">
 
+    <div class="row">
+        <div id="properties" class="col-sm-8" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+        </div>
+    
+        <div id="fav" class="col-sm-4" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+            Favourites
+        </div>
     </div>
-
-
+  
+    <script src="https://kit.fontawesome.com/2faad529dd.js" crossorigin="anonymous"></script>
     <script>
+
+        // Drag and Drop functions
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev, el) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            el.appendChild(document.getElementById(data));
+        }
+
+        // Remove from Favourites Button
+        function removeFromFavourites(property_id) {
+            $("#properties").append($(property_id));
+        }
+
+        // Add to Favourites Button
+        function addToFavourites(property_id) {
+            $("#fav").append($(property_id));
+        }
+
 
         // Property Data
         var data = {
@@ -360,7 +374,7 @@
 
         // Searching for things. 
         $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
+            $("#search_bar").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
                 $(".property_tile").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -371,15 +385,15 @@
             $(".bedroom_select").trigger('change');
         });
 
-
         // Min and max bedrooms filter. 
-
         $(".bedroom_select").on("change", function () {
             var minBed = $("#minBedroom").val();
             var maxBed = $("#maxBedroom").val();
 
             // Return error if max bedrooms is less than min bedrooms.
-            if(maxBed < minBed){
+            if(parseInt(minBed) > parseInt(maxBed)){
+                alert(minBed);
+                alert(maxBed);
                 return $('#properties').html('<div class="property_tile">Invalid range</div/>');
             }
 
@@ -393,7 +407,7 @@
 
             $(property_list).each(function (index) {
 
-                $('#properties').append('<div class="property_tile" property-type="' + property_list[index].type + '" bedrooms="' + property_list[index].bedrooms + '" > \
+                $('#properties').append('<div class="property_tile" property-type="' + property_list[index].type + '" bedrooms="' + property_list[index].bedrooms + '" draggable="true" ondragstart="drag(event)" ondrop="" id="'+ property_list[index].id +'"> \
                     <a href="property_page.html?propertyid='+ property_list[index].id + '"> \
                         <div class="property_box"> \
                             <img src="'+ property_list[index].picture + '"> \
@@ -408,12 +422,13 @@
                             <div id="description">' + property_list[index].description + '</div> \
                         </div> \
                     </a> \
-                    <div id="listed">Created: ' + property_list[index].added.day + "/" + property_list[index].added.month + "/" + property_list[index].added.year + '\
-                    </div> \
+                    <div class="row"><div id="listed">Created: ' + property_list[index].added.day + "/" + property_list[index].added.month + "/" + property_list[index].added.year + '\
+                    </div><button class="addBtn" id="add'+property_list[index].id+'Btn" onclick="addToFavourites('+property_list[index].id+')"><i class="far fa-heart"></i></button> \
+                    <button class="removeBtn" id="remove'+property_list[index].id+'Btn" style="display: none;" onclick="removeFromFavourites('+property_list[index].id+')"><i class="fas fa-heart"></i></button>\
                 </div>');
 
             });
-            });
+        });
 
     </script>
 </body>
