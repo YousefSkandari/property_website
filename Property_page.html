@@ -594,13 +594,19 @@
         //document.getElementById("listed").innerHTML = "Created: " + data.properties[index].added.day + "/" + data.properties[index].added.month + "/" + data.properties[index].added.year;
 
 
-          $(data.properties[index].carousel).each(function (i) {
+        $(data.properties[index].carousel).each(function (i) {
 
-              var count = i + 1;
+          var count = i + 1;
 
-              $('#carousel').append('<div class="mySlides fade"> \
+          if(i == 0){
+            first_image = 'style="display: block;"';
+          } else {
+            first_image = "";
+          }
+
+          $('#carousel').append('<div class="mySlides fade" ' + first_image +'> \
                   <img src="'+ data.properties[index].carousel[i] + '"> \
-                <div class="text">'+  count +  '/ '+ data.properties[index].carousel.length +'</div> \
+                <div class="text">'+ count + '/ ' + data.properties[index].carousel.length + '</div> \
               </div>');
 
         });
